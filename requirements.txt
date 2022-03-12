@@ -1,4 +1,3 @@
-sqlalchemy
 flask
 flask-wtf
 flask-restful
