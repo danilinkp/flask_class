@@ -4,3 +4,4 @@ flask-restful
 flask-login
 sqlalchemy
 sqlalchemy_serializer
+waitress
