@@ -1,6 +1,9 @@
+import os
+
 from flask import Flask, url_for, request, render_template, Blueprint, make_response, jsonify
 from werkzeug.utils import redirect
 
+from waitress import serve
 from data import db_session, news_api
 from data.news import News
 from data.users import User
@@ -504,8 +507,6 @@ def not_found(error):
 
 if __name__ == '__main__':
     db_session.global_init("db/blogs.db")
-    # user_add()
-    # user_get()
-    # news_add()
-    app.register_blueprint(news_api.blueprint)
-    app.run(port=8080, host='127.0.0.1')
+    # app.register_blueprint(news_api.blueprint)
+    port = int(os.environ.get("PORT", 5000))
+    serve(app, host='0.0.0.0', port=port)
